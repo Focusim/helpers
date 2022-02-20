@@ -1,0 +1,94 @@
+<div class="wrapper">
+    <div class="item "></div>
+    <div class="item "></div>
+    <div class="item "></div>
+    <div class="item "></div>
+    <div class="item "></div>
+    <div class="item "></div>
+    <div class="item "></div>
+    <div class="item "></div>
+    <div class="item "></div>
+</div>
+
+<style>
+    .wrapper {
+        max-width: 1000px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+        display: grid;
+        grid-gap: 20px;
+        /* grid-template-rows: /* задаётся через JS; repeat(3, minmax(calc(100% / 3 - 20px), 100px)); /* 3 строки (высота)*/
+        grid-template-columns: repeat(3, minmax(calc(100px / 3 - 20px), 100%)); /* 3 столбца (ширина)*/
+    }
+
+    .item {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: darkslategrey;
+        cursor: pointer;
+    }
+
+    .js-item--disable:before {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: #8d8d33;
+    }
+</style>
+
+<script>
+    const wrapper = document.querySelector('.wrapper');
+    const allItem = wrapper.querySelectorAll('.item');
+
+    // выравнивание блока по ширине
+    function autoHeight() {
+
+        const widthItem = document.querySelector('.item').offsetWidth;
+
+        wrapper.style.gridTemplateRows = "repeat(3, " + widthItem + "px)";
+    }
+
+    autoHeight();
+
+    window.addEventListener('resize', el => {
+
+        autoHeight();
+    });
+
+    // переключение
+    allItem.forEach(el => {
+
+        el.classList.add('js-item--disable')
+
+        el.addEventListener('click', ev => {
+
+            el.classList.toggle('js-item--disable');
+
+            checkActiveElements();
+        })
+    });
+
+    // проверка на не более двух активных элементов
+    function checkActiveElements() {
+        let activeItem = [];
+
+        allItem.forEach(el => {
+            if (!el.classList.contains('js-item--disable')) {
+                activeItem.push("true");
+            }
+        });
+
+        if (activeItem.length > 2) {
+
+            allItem.forEach(el => {
+
+                el.classList.add('js-item--disable')
+            });
+        }
+    }
+
+</script>
+

@@ -1,0 +1,126 @@
+<main>
+
+    <div class="dropdown">
+        <div class="dropdown__title">Контент 1 <span></span><span></span></div>
+        <div class="dropdown__list">
+            <div class="dropdown__item">Text</div>
+            <div class="dropdown__item">Text</div>
+            <div class="dropdown__item">Text</div>
+            <div class="dropdown__item">Text</div>
+            <div class="dropdown__item">Text</div>
+            <div class="dropdown__item">Text</div>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <div class="dropdown__title">Контент 2 <span></span><span></span></div>
+        <div class="dropdown__list">
+            <div class="dropdown__item">Text</div>
+            <div class="dropdown__item">Text</div>
+            <div class="dropdown__item">Text</div>
+            <div class="dropdown__item">Text</div>
+            <div class="dropdown__item">Text</div>
+            <div class="dropdown__item">Text</div>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <div class="dropdown__title">Контент 3 <span></span><span></span></div>
+        <div class="dropdown__list">
+            <div class="dropdown__item">Text</div>
+            <div class="dropdown__item">Text</div>
+            <div class="dropdown__item">Text</div>
+            <div class="dropdown__item">Text</div>
+            <div class="dropdown__item">Text</div>
+            <div class="dropdown__item">Text</div>
+        </div>
+    </div>
+
+</main>
+
+<style>
+    main {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .dropdown {
+        position: relative;
+        border: 1px solid darkblue;
+        border-radius: 6px;
+        width: 100%;
+        max-width: 200px;
+        height: 100%;
+        min-height: 40px;
+        text-align: center;
+        font-weight: 800;
+        user-select: none; /* убирает выделение текста*/
+    }
+
+    .dropdown__title {
+        position: relative;
+        padding: 10px 0;
+        cursor: pointer;
+    }
+
+    .dropdown__list {
+        display: none;
+    }
+
+    .dropdown__list--active {
+        display: block;
+    }
+
+    .dropdown__item {
+        padding: 10px;
+        border-top: 1px solid darkblue;
+    }
+</style>
+
+<script>
+    const allDropdown = document.querySelectorAll('.dropdown');
+
+    allDropdown.forEach(dropdown => {
+        const btn = dropdown.querySelector(".dropdown__title");
+        const list = dropdown.querySelector(".dropdown__list");
+
+        btn.addEventListener('click', ev => {
+
+            if (!list.classList.contains('dropdown__list--active')) {
+                closeDropdown()
+            }
+
+            list.classList.toggle('dropdown__list--active');
+        });
+    })
+
+    function closeDropdown() {
+        allDropdown.forEach(dropdown => {
+            const list = dropdown.querySelector(".dropdown__list");
+
+            list.classList.remove('dropdown__list--active');
+        })
+    }
+
+    // евент закрытия "дропов" по клику вне элемента
+    document.addEventListener('click', ev => {
+
+        allDropdown.forEach(dropdown => {
+            const target = ev.target;
+            const menu = target == dropdown || dropdown.contains(target);
+
+            if (!menu) {
+                const list = dropdown.querySelector(".dropdown__list");
+
+                list.classList.remove('dropdown__list--active');
+            }
+        })
+    });
+</script>
+
+
+
+
+
+
+

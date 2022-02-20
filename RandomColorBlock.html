@@ -1,0 +1,174 @@
+<div class="wrapper">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+</div>
+
+<style>
+    .wrapper {
+        max-width: 1000px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+        display: grid;
+        grid-gap: 20px;
+        /* grid-template-rows: /* задаётся через JS; repeat(3, minmax(calc(100% / 3 - 20px), 100px)); /* 3 строки (высота)*/
+        grid-template-columns: repeat(3, minmax(calc(100px / 3 - 20px), 100%)); /* 3 столбца (ширина)*/
+    }
+
+    .item {
+        width: 100%;
+        height: 100%;
+        background: darkslategrey;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    const wrapper = document.querySelector('.wrapper');
+    const allItem = wrapper.querySelectorAll('.item');
+
+    function autoHeight() {
+
+        const widthItem = document.querySelector('.item').offsetWidth;
+
+        wrapper.style.gridTemplateRows = "repeat(3, " + widthItem + "px)";
+    }
+
+    autoHeight();
+
+    window.addEventListener('resize', el => {
+
+        autoHeight();
+    });
+
+
+    function generateColor() {
+        return '#' + Math.floor(Math.random()*16777215).toString(16)
+    }
+
+    allItem.forEach(item => {
+
+        item.addEventListener('click', ev => {
+
+            setInterval(refreshColor, 700)
+
+            function refreshColor() {
+                item.style.background = generateColor();
+            }
+        });
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
