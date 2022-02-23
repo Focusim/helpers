@@ -1,7 +1,7 @@
 <main>
 
-    <div class="js-dropdown">
-        <div class="js-dropdown__btn">1</div>
+    <div class="dropdown olo">
+        <div class="dropdown__btn">1</div>
         <div class="dropdown__content">
             <div class="dropdown__item">Text</div>
             <div class="dropdown__item">Text</div>
@@ -12,8 +12,8 @@
         </div>
     </div>
 
-    <div class="js-dropdown">
-        <div class="js-dropdown__btn">2</div>
+    <div class="dropdown olo">
+        <div class="dropdown__btn">2</div>
         <div class="dropdown__content">
             <div class="dropdown__item">Text</div>
             <div class="dropdown__item">Text</div>
@@ -24,8 +24,8 @@
         </div>
     </div>
 
-    <div class="js-dropdown">
-        <div class="js-dropdown__btn">3</div>
+    <div class="dropdown olo">
+        <div class="dropdown__btn">3</div>
         <div class="dropdown__content">
             <div class="dropdown__item">Text</div>
             <div class="dropdown__item">Text</div>
@@ -44,7 +44,7 @@
         justify-content: space-around;
     }
 
-    .js-dropdown {
+    .dropdown {
         position: relative;
         border: 1px solid darkblue;
         border-radius: 6px;
@@ -57,11 +57,11 @@
         user-select: none; /* убирает выделение текста*/
     }
 
-    .js-dropdown.js-dropdown--active .dropdown__content {
+    .dropdown.dropdown--active .dropdown__content {
         display: block;
     }
 
-    .js-dropdown__btn {
+    .dropdown__btn {
         position: relative;
         padding: 10px 0;
         cursor: pointer;
@@ -78,51 +78,59 @@
 </style>
 
 <script>
-    function dropDowns() {
+    // находим наши кнопки и отдаём их функции ниже
+    // важно чтоб наш класс стоял первым
+    // плохо class="random dropdown"
+    // хорошо class="dropdown random"
+    var myDropdowns = document.querySelectorAll('.dropdown')
+    var myBtn = document.querySelector('.dropdown__btn').className
+
+    dropDowns(myDropdowns, myBtn);
+
+
+    function dropDowns(item, button) {
         // проверка на элемент
-        if (document.querySelectorAll('.js-dropdown')) {
+        if (item) {
 
-            const allDropdown = document.querySelectorAll('.js-dropdown');
+            var stringItemName = item[0].className
+            var itemName = stringItemName.substr(0, stringItemName.indexOf(' '))
 
-            allDropdown.forEach(dropdown => {
-                const btn = dropdown.querySelector(".js-dropdown__btn");
+            item.forEach(function(dropdown) {
+                var btn = dropdown.querySelector('.' + button)
 
-                btn.addEventListener('click', ev => {
+                btn.addEventListener('click', function(e) {
 
-                    if (!dropdown.classList.contains('js-dropdown--active')) {
+                    if (!dropdown.classList.contains(itemName + '--active')) {
                         closeDropdown()
                     }
 
-                    dropdown.classList.toggle('js-dropdown--active');
+                    dropdown.classList.toggle(itemName + '--active');
                 });
-            })
+            });
 
             function closeDropdown() {
-                allDropdown.forEach(dropdown => {
+                item.forEach(function(dropdown) {
 
-                    dropdown.classList.remove('js-dropdown--active');
+                    dropdown.classList.remove(itemName + '--active');
                 });
             }
 
             // евент закрытия "дропов" по клику вне элемента
-            document.addEventListener('click', ev => {
+            document.addEventListener('click', function(e) {
 
                 // можно убрать перебер если отслеживаем один элемент
-                allDropdown.forEach(dropdown => {
-                    const target = ev.target;
-                    const menu = target == dropdown || dropdown.contains(target);
+                item.forEach(function(dropdown) {
+                    var target = e.target;
+                    var menu = target == dropdown || dropdown.contains(target);
 
                     if (!menu) {
 
-                        dropdown.classList.remove('js-dropdown--active');
+                        dropdown.classList.remove(itemName + '--active');
                     }
                 });
             });
-
         }
     }
-
-    dropDowns();
 </script>
 
 

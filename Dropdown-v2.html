@@ -78,14 +78,18 @@
 </style>
 
 <script>
-    function dropDowns() {
+    // находим наши кнопки и отдаём их функции ниже
+    const drops = document.querySelectorAll('.js-dropdown')
+
+    dropDowns(drops);
+
+
+    function dropDowns(item) {
         // проверка на элемент
-        if (document.querySelectorAll('.js-dropdown')) {
+        if (item) {
 
-            const allDropdown = document.querySelectorAll('.js-dropdown');
-
-            allDropdown.forEach(dropdown => {
-                const btn = dropdown.querySelector(".js-dropdown__btn");
+            item.forEach(dropdown => {
+                const btn = dropdown.querySelector('.js-dropdown__btn')
 
                 btn.addEventListener('click', ev => {
 
@@ -98,7 +102,7 @@
             })
 
             function closeDropdown() {
-                allDropdown.forEach(dropdown => {
+                item.forEach(dropdown => {
 
                     dropdown.classList.remove('js-dropdown--active');
                 });
@@ -108,7 +112,7 @@
             document.addEventListener('click', ev => {
 
                 // можно убрать перебер если отслеживаем один элемент
-                allDropdown.forEach(dropdown => {
+                item.forEach(dropdown => {
                     const target = ev.target;
                     const menu = target == dropdown || dropdown.contains(target);
 
@@ -121,8 +125,6 @@
 
         }
     }
-
-    dropDowns();
 </script>
 
 
