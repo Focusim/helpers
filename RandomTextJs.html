@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="wrapper">
+    <h1>Генерация рандомных букв EU</h1>
+    <input id="value" class="btn" placeholder="Введите количество символов">
+    <div id="generate" class="btn">Сгенерировать</div>
+    <div id="area" class="output"></div>
+    <div id="clear" class="btn">Очистить</div>
+</div>
+
+<style>
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .btn {
+        background: darkslategrey;
+        max-width: 600px;
+        width: 100%;
+        min-height: 40px;
+        border-radius: 5px;
+        padding: 10px 20px;
+        text-transform: uppercase;
+        color: white;
+        cursor: pointer;
+        text-align: center;
+        letter-spacing: 0.1em;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        user-select: none;
+    }
+
+    .btn:active {
+        transform: scale(0.98);
+    }
+
+    .output {
+        background: gainsboro;
+        max-width: 600px;
+        width: 100%;
+        min-height: 40px;
+        border-radius: 5px;
+        padding: 10px 20px;
+        word-break: break-word;
+    }
+</style>
+
+<script>
+    var doc = document
+    var generateBtn = doc.querySelector('#generate')
+    var area =  doc.querySelector('#area')
+    var clearBtn = doc.querySelector('#clear')
+    var valueInput = doc.querySelector('#value')
+
+    generateBtn.addEventListener('click', function (event) {
+        var value = Number(valueInput.value)
+        var possible = "abcdefghijklmnopqrstuvwxyzAEIOUYBCDFGHJKLMNPQRSTVWXZ";
+
+        if (value > 0 && value) {
+
+            var out = ''
+
+            for( var i = 0; i < value; i++ ) {
+
+                out += possible.charAt(Math.floor(Math.random() * possible.length));
+            }
+
+            area.innerHTML = out
+        } else {
+            area.innerHTML = ''
+        }
+    });
+
+    clearBtn.addEventListener('click', function (event) {
+        area.innerHTML = ''
+        valueInput.value = ''
+    });
+</script>
+
+</body>
+</html>
