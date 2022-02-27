@@ -1,6 +1,6 @@
 <main>
 
-    <div class="dropdown olo">
+    <div class="dropdown">
         <div class="dropdown__btn">1</div>
         <div class="dropdown__content">
             <div class="dropdown__item">Text</div>
@@ -12,8 +12,8 @@
         </div>
     </div>
 
-    <div class="dropdown olo">
-        <div class="dropdown__btn">2</div>
+    <div class="dropdown olo olo">
+        <div class="dropdown__btn olo ">2</div>
         <div class="dropdown__content">
             <div class="dropdown__item">Text</div>
             <div class="dropdown__item">Text</div>
@@ -83,20 +83,23 @@
     // плохо class="random dropdown"
     // хорошо class="dropdown random"
     var myDropdowns = document.querySelectorAll('.dropdown')
-    var myBtn = document.querySelector('.dropdown__btn').className
+    var myBtn = document.querySelectorAll('.dropdown__btn')
 
     dropDowns(myDropdowns, myBtn);
 
 
     function dropDowns(item, button) {
         // проверка на элемент
-        if (item) {
+        if (item && button) {
 
-            var stringItemName = item[0].className
+            var stringItemName = item[0].className += ' '
             var itemName = stringItemName.substr(0, stringItemName.indexOf(' '))
 
+            var stringButtonName = button[0].className += ' '
+            var buttonName = stringButtonName.substr(0, stringButtonName.indexOf(' '))
+
             item.forEach(function(dropdown) {
-                var btn = dropdown.querySelector('.' + button)
+                var btn = dropdown.querySelector('.' + buttonName)
 
                 btn.addEventListener('click', function(e) {
 
