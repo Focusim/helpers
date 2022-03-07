@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+
+
+<div class="select js-select" data-state="">
+    <div class="select__title js-select__title" data-default="Option 0">75×75</div>
+    <div class="select__content">
+        <input id="" class="select__input" type="radio" name="singleSelect"/>
+        <label for="" class="select__label js-select__label"></label>
+
+        <input id="select1" class="select__input" type="radio" name="singleSelect"/>
+        <label for="select1" value="1" class="select__label js-select__label">75×75</label>
+
+        <input id="select2" class="select__input" type="radio" name="singleSelect"/>
+        <label for="select2" value="2" class="select__label js-select__label">155×155</label>
+
+        <input id="select3" class="select__input" type="radio" name="singleSelect"/>
+        <label for="select3" value="3" class="select__label js-select__label">186×186</label>
+
+        <input id="select4" class="select__input" type="radio" name="singleSelect"/>
+        <label for="select4" value="4" class="select__label js-select__label">248×248</label>
+
+        <input id="select5" class="select__input" type="radio" name="singleSelect"/>
+        <label for="select5" value="5" class="select__label js-select__label">300×300</label>
+
+        <input id="select6" class="select__input" type="radio" name="singleSelect"/>
+        <label for="select6" value="6" class="select__label js-select__label">450×450</label>
+    </div>
+</div>
+
+<style>
+
+    .select {
+        position: relative;
+        width: 100%;
+        margin: 0 0 30px 0;
+        background: #ffffff;
+        border-radius: 8px; }
+    /*@media (min-width: 900px) {*/
+    /*    .select {*/
+    /*        display: none; } }*/
+    .select[data-state="active"] {
+        border-radius: 8px 8px 0 0; }
+    .select[data-state="active"] .select__title::before {
+        transform: translate(-3px, -50%) rotate(-45deg); }
+    .select[data-state="active"] .select__title::after {
+        transform: translate(3px, -50%) rotate(45deg); }
+    .select[data-state="active"] .select__content {
+        opacity: 1; }
+    .select[data-state="active"] .select__label + .select__input + .select__label {
+        max-height: 40px;
+        border-top-width: 1px; }
+    .select__title {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 41px;
+        padding: 8px 16px;
+        border-radius: 8px;
+        cursor: pointer; }
+    .select__title::before, .select__title::after {
+        content: "";
+        position: absolute;
+        top: 20px;
+        right: 16px;
+        display: block;
+        width: 10px;
+        height: 2px;
+        transition: all 0.3s ease-out;
+        background-color: #333333;
+        transform: translate(-3px, -50%) rotate(45deg); }
+    .select__title::after {
+        transform: translate(3px, -50%) rotate(-45deg); }
+    .select__title:hover::before, .select__title:hover::after {
+        background-color: #009940; }
+    .select__content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: #ffffff;
+        border-top: none;
+        transition: all 0.3s ease-out;
+        opacity: 0;
+        z-index: 8; }
+    .select__content label:last-child {
+        border-radius: 0 0 8px 8px; }
+    .select__input {
+        display: none; }
+    .select__input:checked + label {
+        background-color: #dedede; }
+    .select__input:disabled + label {
+        opacity: 0.6;
+        pointer-events: none; }
+    .select__label {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 40px;
+        max-height: 0;
+        padding: 0 16px;
+        transition: all 0.2s ease-out;
+        cursor: pointer;
+        overflow: hidden; }
+    .select__label + input + .select__label {
+        border-top: 0 solid #C7CCD160; }
+    .select__label:hover {
+        background-color: #009940;
+        color: #ffffff; }
+
+
+</style>
+
+<script>
+    var selectSingle = document.querySelector('.js-select')
+    var selectSingleTitle = selectSingle.querySelector('.js-select__title')
+    var selectSingleLabels = selectSingle.querySelectorAll('.js-select__label')
+
+    // Мобильный селектор
+    selectSingleTitle.addEventListener('click', () => {
+        if ('active' === selectSingle.getAttribute('data-state')) {
+
+            selectSingle.setAttribute('data-state', '')
+        } else {
+
+            selectSingle.setAttribute('data-state', 'active')
+        }
+    });
+
+    // Логика выбора мобильного селектора
+    for (let i = 0; i < selectSingleLabels.length; i++) {
+
+        selectSingleLabels[i].addEventListener('click', (event) => {
+
+            switch (selectSingleLabels[i].getAttribute('value')) {
+                case '1':
+                    sizeInput.value = 1
+                    break;
+                case '2':
+                    sizeInput.value = 2
+                    break;
+                case '3':
+                    sizeInput.value = 3
+                    break;
+                case '4':
+                    sizeInput.value = 4
+                    break;
+                case '5':
+                    sizeInput.value = 5
+                    break;
+                case '6':
+                    sizeInput.value = 6
+                    break;
+            }
+
+            selectSingleTitle.textContent = event.target.textContent
+            selectSingle.setAttribute('data-state', '')
+        });
+    }
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>
