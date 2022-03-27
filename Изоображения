@@ -1,0 +1,92 @@
+Информация по выводу картинок:
+
+<img srcset="(cat.jpg 720w (w - физический размер картинки/размер на странице))"
+     size="(задаётся медиа запрос для подбора картинки браузеру. пример: (max-width: 320px) calc(50vw - 20px)"
+     src="Дефолтная картинка">
+
+Проблема вывода на разных устройствах, из за отличий плотности пикселей ;(
+
+
+loading="auto(браузер выберает сам)
+        /eager(загружать картинку сразу)
+        /lazy(прогружать картинку когда пользователь до неё дойдёт/будет к ней близко)"
+
+
+decoder="sync (высокий приоретет загрузки картинки)
+        /async (загружает картинку когда будут доступны ресурсы)"
+
+
+alt="" делится на два типа Информационые/Декоративные
+Декоративные:
+Не несут инсофрации, даём пустой alt="" role="presentation" и area-hidden="true"
+
+Информативные:
+Можем использовать  <figure>
+                        <img src="" alt="Ёмкое описание картинки"
+                        <figcaption>
+                            Информация об изоображении
+                            (например, фото или автор).
+                        </figcaption>
+                    </figure>
+
+                    Для (графиков) svg:
+                    <svg role="img" aria-label="Описание графика" aria-described-by="chart-desc">
+                       <path>
+                       <desc id="chart-desc">
+                            Подробное описание графика/svg
+                       </desc>
+                    </svg>
+
+                    <picture> // самое оптимальное решение
+                        <source media="(max-width: 899px)" srcset="cat.jpg">
+                        <source media="(max-width: 1250px)" srcset="cat.jpg 1x, cat.jpg 2x (2x - для ретин картинок)">
+                        <img
+                            src="cat.jpg"
+                            alt="Котик"
+                            loading="lazy"
+                        >
+                    </picture>
+
+alt="" Пустой - не будет ничего выводить если фото не загрузится / в конце текста ставим точку, для скрин лидера
+alt="" Можем стилизовать с помощью ::before / ::after
+
+Приоритет качество/вес картинок AVIF WEBP (SVG PNG JPG)
+
+
+Ещё картинки можно сдлать с гибкими размерами
+Пример css:
+    .img-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 */
+        height: 0;
+        overflow: hidden;
+    }
+
+    .img-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+Но, сейчас на замену пришёл: object-fit: cover
+
+
+Из интересного, мы можем делать картинки пиксельными
+Пример css:
+    .pixelated {
+        width: 512px;
+        height: 512px;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: -webkit-crisp-edges;
+        image-rendering: pixelated;
+        image-rendering: crisp-edges;
+    }
+Выставляете маленькую иконку, скажем, 12x12, растягиваете ее, и такой пиксельный эффект сохраняется. Это ещё и обалденная экономия трафика.
+
+
+Как можно еще быстрее грузить картинки?
+Это просто:
+<link rel="preload"
+      as="image"
+      href="important-image.jpg">
