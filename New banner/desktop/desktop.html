@@ -9,6 +9,9 @@
 
     <div class="container">
         <div class="banner">
+            <div class="banner__sprite">
+                <img src="sprite.png">
+            </div>
             <div class="banner__inner">
                 <div class="banner__item">
                     <div class="banner__event">
@@ -60,6 +63,17 @@
         height: 250px;
         margin: 0 auto;
         padding: 16px 0;
+        overflow: hidden;
+    }
+    .banner__sprite {
+        display: flex;
+        justify-content: end;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .banner__sprite img {
+        width: calc(100% - 14px);
     }
     .banner__inner {
         display: flex;
