@@ -8,7 +8,7 @@
 <body>
 
     <div class="container">
-        <a href="#" class="link" target="_blank"></a>
+        <a href="https://mindbox.ru/journal/events/webinar-bausch-lomb-19052022/?utm_source=vc&utm_medium=banner&utm_campaign=event-webinar-bausch-lomb-t-ev-0522_on_bausch-lomb" class="link" target="_blank"></a>
         <div class="banner">
             <div class="banner__anim">
                 <svg width="521" height="529" viewBox="0 0 521 529" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="banner__date">
-                        18 мая <span>18:00</span>
+                        19 мая <span>18:00</span>
                     </div>
                 </div>
 
@@ -163,11 +163,13 @@
         z-index: 100;
     }
     .circle .circle__anim:nth-child(2) {
+        -webkit-animation: circle-anim-one 4s linear 0s infinite;
         animation: circle-anim-one 4s linear 0s infinite;
         background: #ffffff;
     }
-    @keyframes circle-anim-one {
+    @-webkit-keyframes circle-anim-one {
         from {
+            -webkit-transform: scale(1);
             transform: scale(1);
             opacity: 0.2;
         }
@@ -175,38 +177,85 @@
             opacity: 0;
         }
         to {
+            -webkit-transform: scale(43);
+            transform: scale(43);
+            opacity: 0;
+        }
+    }
+    @keyframes circle-anim-one {
+        from {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 0.2;
+        }
+        90% {
+            opacity: 0;
+        }
+        to {
+            -webkit-transform: scale(43);
             transform: scale(43);
             opacity: 0;
         }
     }
     .circle .circle__anim:nth-child(3) {
+        -webkit-animation: circle-anim-two 4s linear 0s infinite;
         animation: circle-anim-two 4s linear 0s infinite;
         background: #ffffff;
     }
-    @keyframes circle-anim-two {
+    @-webkit-keyframes circle-anim-two {
         from {
+            -webkit-transform: scale(1);
             transform: scale(1);
             opacity: 0.3;
         }
         to {
+            -webkit-transform: scale(23);
+            transform: scale(23);
+            opacity: 0;
+        }
+    }
+    @keyframes circle-anim-two {
+        from {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 0.3;
+        }
+        to {
+            -webkit-transform: scale(23);
             transform: scale(23);
             opacity: 0;
         }
     }
     .circle .circle__anim:nth-child(4) {
+        -webkit-animation: circle-anim-tree 4s linear 0s infinite;
         animation: circle-anim-tree 4s linear 0s infinite;
     }
-    @keyframes circle-anim-tree {
+    @-webkit-keyframes circle-anim-tree {
         from {
+            -webkit-transform: scale(1);
             transform: scale(1);
             opacity: 0.3;
         }
         to {
+            -webkit-transform: scale(13);
+            transform: scale(13);
+            opacity: 0;
+        }
+    }
+    @keyframes circle-anim-tree {
+        from {
+            -webkit-transform: scale(1);
+            transform: scale(1);
+            opacity: 0.3;
+        }
+        to {
+            -webkit-transform: scale(13);
             transform: scale(13);
             opacity: 0;
         }
     }
     .banner, .banner * {
+        -webkit-box-sizing: border-box;
         box-sizing: border-box;
     }
     .banner {
@@ -223,30 +272,64 @@
         position: absolute;
         top: 0;
         left: 0;
-        filter: blur(1px);
+        -webkit-transform: translate(-55px, 165px) rotate(0deg);
+        -ms-transform: translate(-55px, 165px) rotate(0deg);
         transform: translate(-55px, 165px) rotate(0deg);
         opacity: 0;
+        -webkit-animation: anim-item-one 20s linear 0s infinite;
         animation: anim-item-one 20s linear 0s infinite;
     }
-    @keyframes anim-item-one {
+    @-webkit-keyframes anim-item-one {
         0% {
             opacity: 0;
+            -webkit-transform: translate(-55px, 165px) rotate(0deg);
             transform: translate(-55px, 165px) rotate(0deg);
         }
         25% {
             opacity: 0.2;
+            -webkit-transform: translate(-65px, 147px) rotate(4deg);
             transform: translate(-65px, 147px) rotate(4deg);
         }
         50% {
             opacity: 0.4;
+            -webkit-transform: translate(-75px, 135px) rotate(8deg);
             transform: translate(-75px, 135px) rotate(8deg);
         }
         75% {
             opacity: 0.2;
+            -webkit-transform: translate(-85px, 123px) rotate(12deg);
             transform: translate(-85px, 123px) rotate(12deg);
         }
         100% {
             opacity: 0;
+            -webkit-transform: translate(-85px, 100px) rotate(16deg);
+            transform: translate(-85px, 100px) rotate(16deg);
+        }
+    }
+    @keyframes anim-item-one {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate(-55px, 165px) rotate(0deg);
+            transform: translate(-55px, 165px) rotate(0deg);
+        }
+        25% {
+            opacity: 0.2;
+            -webkit-transform: translate(-65px, 147px) rotate(4deg);
+            transform: translate(-65px, 147px) rotate(4deg);
+        }
+        50% {
+            opacity: 0.4;
+            -webkit-transform: translate(-75px, 135px) rotate(8deg);
+            transform: translate(-75px, 135px) rotate(8deg);
+        }
+        75% {
+            opacity: 0.2;
+            -webkit-transform: translate(-85px, 123px) rotate(12deg);
+            transform: translate(-85px, 123px) rotate(12deg);
+        }
+        100% {
+            opacity: 0;
+            -webkit-transform: translate(-85px, 100px) rotate(16deg);
             transform: translate(-85px, 100px) rotate(16deg);
         }
     }
@@ -254,35 +337,73 @@
         position: absolute;
         top: 0;
         right: 0;
-        filter: blur(1px);
+        -webkit-transform: translate(-99px, -245px) rotate(0deg);
+        -ms-transform: translate(-99px, -245px) rotate(0deg);
         transform: translate(-99px, -245px) rotate(0deg);
         opacity: 0.1;
+        -webkit-animation: anim-item-two 20s linear 0s infinite;
         animation: anim-item-two 20s linear 0s infinite;
     }
-    @keyframes anim-item-two {
+    @-webkit-keyframes anim-item-two {
         0% {
             opacity: 0;
+            -webkit-transform: translate(-99px, -245px) rotate(0deg);
             transform: translate(-99px, -245px) rotate(0deg);
         }
         25% {
             opacity: 0.2;
+            -webkit-transform: translate(-111px, -250px) rotate(10deg);
             transform: translate(-111px, -250px) rotate(10deg);
         }
         50% {
             opacity: 0.4;
+            -webkit-transform: translate(-123px, -260px) rotate(20deg);
             transform: translate(-123px, -260px) rotate(20deg);
         }
         75% {
             opacity: 0.2;
+            -webkit-transform: translate(-135px, -260px) rotate(35deg);
             transform: translate(-135px, -260px) rotate(35deg);
         }
         100% {
             opacity: 0;
+            -webkit-transform: translate(-135px, -260px) rotate(45deg);
+            transform: translate(-135px, -260px) rotate(45deg);
+        }
+    }
+    @keyframes anim-item-two {
+        0% {
+            opacity: 0;
+            -webkit-transform: translate(-99px, -245px) rotate(0deg);
+            transform: translate(-99px, -245px) rotate(0deg);
+        }
+        25% {
+            opacity: 0.2;
+            -webkit-transform: translate(-111px, -250px) rotate(10deg);
+            transform: translate(-111px, -250px) rotate(10deg);
+        }
+        50% {
+            opacity: 0.4;
+            -webkit-transform: translate(-123px, -260px) rotate(20deg);
+            transform: translate(-123px, -260px) rotate(20deg);
+        }
+        75% {
+            opacity: 0.2;
+            -webkit-transform: translate(-135px, -260px) rotate(35deg);
+            transform: translate(-135px, -260px) rotate(35deg);
+        }
+        100% {
+            opacity: 0;
+            -webkit-transform: translate(-135px, -260px) rotate(45deg);
             transform: translate(-135px, -260px) rotate(45deg);
         }
     }
     .banner__sprite {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
         justify-content: end;
         position: absolute;
         top: 0;
@@ -292,6 +413,8 @@
         width: 50%;
     }
     .banner__inner {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
     }
     .banner__inner .banner__item:nth-child(1){
@@ -309,7 +432,12 @@
         margin: 10px 0 0 0;
     }
     .banner__item {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
     }
     .banner__event {
@@ -362,33 +490,66 @@
         border-radius: 6px;
         padding: 7px 0 10px 0;
         width: 189px;
+        -webkit-animation: anim-btn 5s linear 0s infinite;
         animation: anim-btn 5s linear 0s infinite;
     }
-    @keyframes anim-btn {
+    @-webkit-keyframes anim-btn {
         0%, 40% {
+            -webkit-transform: translate(0px, 0px);
             transform: translate(0px, 0px);
         }
         44% {
+            -webkit-transform: translate(2px, 0px);
             transform: translate(2px, 0px);
         }
         48% {
+            -webkit-transform: translate(-2px, 0px);
             transform: translate(-2px, 0px);
         }
         52% {
+            -webkit-transform: translate(2px, 0px);
             transform: translate(2px, 0px);
         }
         56% {
+            -webkit-transform: translate(0px, 0px);
             transform: translate(0px, 0px);
         }
         60%, 100% {
+            -webkit-transform: translate(0px, 0px);
             transform: translate(0px, 0px);
-         }
+        }
+    }
+    @keyframes anim-btn {
+        0%, 40% {
+            -webkit-transform: translate(0px, 0px);
+            transform: translate(0px, 0px);
+        }
+        44% {
+            -webkit-transform: translate(2px, 0px);
+            transform: translate(2px, 0px);
+        }
+        48% {
+            -webkit-transform: translate(-2px, 0px);
+            transform: translate(-2px, 0px);
+        }
+        52% {
+            -webkit-transform: translate(2px, 0px);
+            transform: translate(2px, 0px);
+        }
+        56% {
+            -webkit-transform: translate(0px, 0px);
+            transform: translate(0px, 0px);
+        }
+        60%, 100% {
+            -webkit-transform: translate(0px, 0px);
+            transform: translate(0px, 0px);
+        }
     }
     .banner__bauch-lomb {
         margin-bottom: 12px;
     }
     .banner__speaker {
-        font-weight: 700;
+        font-weight: 500;
         margin-bottom: 6px;
     }
     .banner__speaker-info {
