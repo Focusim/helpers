@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Анимация спрайта</title>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="item"></div>
+</div>
+
+<style>
+    .wrapper {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    .item {
+        width: 150px;
+        height: 150px;
+        background: url("anim-sprite.png") 0 0;
+        animation: play 0.8s steps(6) infinite;
+    }
+
+    @keyframes play {
+        from {
+            background-position: 900px;
+        }
+    }
+
+</style>
+
+</body>
+</html>
